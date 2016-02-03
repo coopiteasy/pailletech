@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+       <record model="ir.ui.view" id="crm_lead_date_form_view">
+            <field name="name">crm.lead.code.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='section_id']" position="attributes">
+                	<attribute name="attrs">{'invisible':True}</attribute>
+                </xpath>
+                <xpath expr="//div[@groups='base.group_multi_salesteams']" position="attributes">
+                	<attribute name="attrs">{'invisible':True}</attribute>
+                </xpath>
+                <field name="user_id" position="after">
+                    <field name="pre_down_payment_date"/>
+                    <field name="down_payment_date"/>
+                    <field name="building_permit"/>
+	                <field name="building_permit_date" attrs="{'invisible':[('building_permit','=',True)]}"/>
+	                <field name="fifty_percent_payment_date"/>
+                </field>
+                
+                <xpath expr="//field[@name='priority']/.." position="before">
+                    <group>
+	                    <field name="architect"/>
+	                    <field name="architect_phone"/>
+	                    <field name="architect_mobile"/>
+	                    <field name="architect_email"/>
+                  	</group>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_lead_date_tree_view">
+            <field name="name">crm.lead.date.tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_leads" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="before">
+                	 <field name="mobile"/>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="after">
+                	 <field name="architect"/>
+                </xpath>  
+                <xpath expr="//field[@name='section_id']" position="replace">
+                	 <field name="section_id" invisible="1"/>
+                </xpath> 
+            </field>
+        </record>
+		
+		<record model="ir.ui.view" id="crm_architect_lead_form">
+            <field name="name">crm.architect.lead.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm_construction_architect.construction_architect_sale_lead_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='architect']" position="replace"/>
+                
+            </field>
+        </record>
+    </data>
+</openerp>
