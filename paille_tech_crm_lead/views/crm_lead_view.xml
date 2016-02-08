@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-       <record model="ir.ui.view" id="crm_lead_date_form_view">
+       <record model="ir.ui.view" id="crm_lead_form_view">
             <field name="name">crm.lead.code.form</field>
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
@@ -31,7 +31,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="crm_lead_date_tree_view">
+        <record model="ir.ui.view" id="crm_lead_tree_view">
             <field name="name">crm.lead.date.tree</field>
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_case_tree_view_leads" />
@@ -45,6 +45,12 @@
                 <xpath expr="//field[@name='section_id']" position="replace">
                 	 <field name="section_id" invisible="1"/>
                 </xpath> 
+                <xpath expr="//field[@name='create_date']" position="replace">
+                	<field name="create_date" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='stage_id']" position="replace">
+                	<field name="stage_id" invisible="1"/>
+                </xpath>
             </field>
         </record>
 		
@@ -93,6 +99,26 @@
                     <field name="architect_phone"/>
                     <field name="architect_mobile"/>
                     <field name="architect_email"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="crm_case_tree_view_oppor">
+            <field name="name">Opportunities Tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_oppor" />
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='create_date']" position="replace">
+                	<field name="create_date" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='section_id']" position="replace">
+	                <field name="section_id" invisible="1" groups="base.group_multi_salesteams"/>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="replace">
+                    <field name="user_id" invisible="1" />
+               </xpath>
+               <xpath expr="//field[@name='planned_revenue']" position="replace">
+                	<field name="planned_revenue" digits="[42,0]" sum="Expected Revenues"/>
                 </xpath>
             </field>
         </record>
