@@ -12,16 +12,28 @@
                 <xpath expr="//div[@groups='base.group_multi_salesteams']" position="attributes">
                 	<attribute name="attrs">{'invisible':True}</attribute>
                 </xpath>
-                <field name="user_id" position="after">
+                
+                <xpath expr="//label[@for='section_id']/.." position="attributes">
+                	<attribute name="string">Estimations</attribute>
+                </xpath>
+                
+                <xpath expr="//label[@for='section_id']" position="before">
+                    <field name="building_permit"/>
+	                <field name="building_permit_date"/>
                     <field name="pre_down_payment_date"/>
                     <field name="down_payment_date"/>
-                    <field name="building_permit"/>
-	                <field name="building_permit_date" attrs="{'invisible':[('building_permit','=',True)]}"/>
-	                <field name="fifty_percent_payment_date"/>
-                </field>
+	                <field name="balance_payment_date"/>
+                </xpath>
                 
+                <xpath expr="//field[@name='user_id']" position="replace"/>
+                 
+                <xpath expr="//label[@for='contact_name']" position="before">
+					<field name="user_id" on_change="on_change_user(user_id, context)"
+                                context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'base.group_sale_salesman_all_leads'] }"/>
+				</xpath>
+				
                 <xpath expr="//field[@name='priority']/.." position="before">
-                    <group>
+                    <group string="Architect information">
 	                    <field name="architect"/>
 	                    <field name="architect_phone"/>
 	                    <field name="architect_mobile"/>
@@ -86,14 +98,29 @@
                 <xpath expr="//div[@groups='base.group_multi_salesteams']" position="attributes">
                 	<attribute name="attrs">{'invisible':True}</attribute>
                 </xpath>
-                <field name="user_id" position="after">
+                
+                <xpath expr="//label[@for='section_id']/.." position="attributes">
+                	<attribute name="string">Estimations</attribute>
+                </xpath>
+                
+                <xpath expr="//label[@for='section_id']" position="before">
+                    <field name="building_permit"/>
+	                <field name="building_permit_date"/>
                     <field name="pre_down_payment_date"/>
                     <field name="down_payment_date"/>
-                    <field name="building_permit"/>
-	                <field name="building_permit_date" attrs="{'invisible':[('building_permit','=',True)]}"/>
-	                <field name="fifty_percent_payment_date"/>
-                </field>
-                
+	                <field name="balance_payment_date"/>
+                </xpath>
+                 
+                <xpath expr="//field[@name='user_id']" position="replace"/>
+                 
+                <xpath expr="//label[@for='title_action']" position="before">
+					<field name="user_id" on_change="on_change_user(user_id, context)" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'base.group_sale_salesman_all_leads']}"/>
+				</xpath>
+				 
+				<xpath expr="//field[@name='categ_ids']/.." position="attributes">
+                	<attribute name="string">Architect information</attribute>
+                </xpath>
+                 
                 <xpath expr="//field[@name='categ_ids']" position="before">
                     <field name="architect" context="{'default_isArchitect': True,'default_customer': False}"/>
                     <field name="architect_phone"/>

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-05 13:25+0000\n"
-"PO-Revision-Date: 2016-02-05 14:30+0100\n"
+"POT-Creation-Date: 2016-02-09 14:07+0000\n"
+"PO-Revision-Date: 2016-02-09 15:10+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 "Language: fr_BE\n"
 "X-Generator: Poedit 1.6.5\n"
-
-#. module: paille_tech_crm_lead
-#: field:crm.lead,fifty_percent_payment_date:0
-msgid "50% advance date"
-msgstr "Date de l'acompte de 50%"
 
 #. module: paille_tech_crm_lead
 #: field:crm.lead,architect_email:0
@@ -38,6 +33,11 @@ msgid "Architect phone"
 msgstr "Téléphone de l'architecte "
 
 #. module: paille_tech_crm_lead
+#: field:crm.lead,balance_payment_date:0
+msgid "Balance payment date"
+msgstr "Date de paiement du solde"
+
+#. module: paille_tech_crm_lead
 #: field:crm.lead,building_permit_date:0
 msgid "Building permit date"
 msgstr "Date du permis de bâtir"
@@ -53,6 +53,11 @@ msgid "Down payment date"
 msgstr "Date de l'acompte"
 
 #. module: paille_tech_crm_lead
+#: view:crm.lead:paille_tech_crm_lead.crm_case_tree_view_oppor
+msgid "Expected Revenues"
+msgstr "Revenus attendus"
+
+#. module: paille_tech_crm_lead
 #: model:ir.model,name:paille_tech_crm_lead.model_crm_lead
 msgid "Lead/Opportunity"
 msgstr "Piste/opportunité"
@@ -63,7 +68,7 @@ msgid "Pre-down payment date"
 msgstr "Date du pré-acompte"
 
 #. module: paille_tech_crm_lead
-#: view:crm.lead:paille_tech_crm_lead.crm_lead_date_form_view
+#: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
 #: view:crm.lead:paille_tech_crm_lead.crm_oppor_date_form
 msgid "{'invisible':True}"
 msgstr "{'invisible':True}"
