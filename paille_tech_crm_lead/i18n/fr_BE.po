@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-09 14:07+0000\n"
-"PO-Revision-Date: 2016-02-09 15:10+0100\n"
+"POT-Creation-Date: 2016-02-09 15:31+0000\n"
+"PO-Revision-Date: 2016-02-09 16:35+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,6 +21,12 @@ msgstr ""
 #: field:crm.lead,architect_email:0
 msgid "Architect email"
 msgstr "Email de l'architecte "
+
+#. module: paille_tech_crm_lead
+#: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
+#: view:crm.lead:paille_tech_crm_lead.crm_oppor_date_form
+msgid "Architect information"
+msgstr "Architect information"
 
 #. module: paille_tech_crm_lead
 #: field:crm.lead,architect_mobile:0
@@ -53,6 +59,32 @@ msgid "Down payment date"
 msgstr "Date de l'acompte"
 
 #. module: paille_tech_crm_lead
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:38
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:61
+#, python-format
+msgid "Down payment date can't be greater than the balance payment date."
+msgstr ""
+"La date de paiement de l'accompte ne peut pas être supérieur à la date de "
+"paiement du solde."
+
+#. module: paille_tech_crm_lead
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:25
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:31
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:37
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:48
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:54
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:60
+#, python-format
+msgid "Error!"
+msgstr "Error!"
+
+#. module: paille_tech_crm_lead
+#: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
+#: view:crm.lead:paille_tech_crm_lead.crm_oppor_date_form
+msgid "Estimations"
+msgstr "Estimations"
+
+#. module: paille_tech_crm_lead
 #: view:crm.lead:paille_tech_crm_lead.crm_case_tree_view_oppor
 msgid "Expected Revenues"
 msgstr "Revenus attendus"
@@ -66,6 +98,24 @@ msgstr "Piste/opportunité"
 #: field:crm.lead,pre_down_payment_date:0
 msgid "Pre-down payment date"
 msgstr "Date du pré-acompte"
+
+#. module: paille_tech_crm_lead
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:32
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:55
+#, python-format
+msgid "Predown payment date can't be greater than the balance payment date."
+msgstr ""
+"La date de paiement du préaccompte ne peut pas être supérieur à la date de "
+"paiement du solde."
+
+#. module: paille_tech_crm_lead
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:26
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:49
+#, python-format
+msgid "Predown payment date can't be greater than the down payment date."
+msgstr ""
+"La date de paiement du préaccompte ne peut pas être supérieur à la date de "
+"paiement de l'accompte."
 
 #. module: paille_tech_crm_lead
 #: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
