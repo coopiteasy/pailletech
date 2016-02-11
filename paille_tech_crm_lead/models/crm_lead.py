@@ -18,7 +18,6 @@ class CrmLead(models.Model):
     
     @api.multi
     def write(self, vals):
-        super(CrmLead, self).write(vals)
         if self.pre_down_payment_date and self.down_payment_date:
             if self.pre_down_payment_date > self.down_payment_date:
                 raise except_orm(
@@ -41,7 +40,6 @@ class CrmLead(models.Model):
     
     @api.model
     def create(self, vals):
-        super(CrmLead, self).create(vals)
         if self.pre_down_payment_date and self.down_payment_date:
             if self.pre_down_payment_date > self.down_payment_date:
                 raise except_orm(
