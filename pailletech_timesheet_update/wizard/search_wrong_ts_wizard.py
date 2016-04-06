@@ -50,11 +50,11 @@ class search_wrong_ts_wizard(orm.TransientModel):
                 price = product.standard_price
                 ts_ids = ts_obj.search(cr, uid, [('user_id','=',user.id)])
                 for ts in ts_obj.browse(cr, uid, ts_ids, context):
-                    if ts.sheet_id.state in ['draft', 'new']:
+                    if ts.sheet_id == False or ts.sheet_id.state in ['draft', 'new', False]:
                         ts_values['amount'] = ts.unit_amount * price
                         ts_obj.write(cr, uid, ts.id, ts_values, context)
                     else:
-                        print "following line can't be updated :" + ts.name + ' ' + ts.date
+                        print "following line can't be updated :" +  ts.name + ' ' + ts.date
         
         return True
     

@@ -80,6 +80,6 @@
             <field name="act_window_id" ref="action_pailletech_ts_tree1"/>
         </record>
         
-		<menuitem id="menu_search_wrong_ts_wizard" name="Search Wrong TS" parent="hr.menu_hr_configuration" action="action_search_wrong_ts_wizard" sequence="5"/>
+		<menuitem id="menu_search_wrong_ts_wizard" name="Search Wrong TS" parent="hr.menu_hr_configuration" action="action_search_wrong_ts_wizard" groups="base.group_system" sequence="5"/>
     </data>
 </openerp>
