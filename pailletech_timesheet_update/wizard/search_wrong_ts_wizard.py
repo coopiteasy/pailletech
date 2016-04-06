@@ -30,9 +30,6 @@ class search_wrong_ts_wizard(orm.TransientModel):
         for user in user_obj.browse(cr, uid, user_ids, context):
             if user.employee_ids and user.employee_ids[0].product_id:
                 product = user.employee_ids[0].product_id
-                #prod_vals = prod_obj.search_read(cr, uid, [('id','=',product.id)],[])[0]
-                #prod_vals.update(uom_vals)
-                #prod_obj.create(cr, uid, prod_vals, context)
                 uom_vals['property_account_expense'] = product.property_account_expense.id
                 uom_vals['name'] = product.name
                 uom_vals['standard_price'] = product.standard_price
@@ -41,7 +38,6 @@ class search_wrong_ts_wizard(orm.TransientModel):
                 prod_obj.unlink(cr,uid, product.id,context)
         
         for user in user_obj.browse(cr, uid, user_ids, context):
-            print user.name
             if user.employee_ids and user.employee_ids[0].product_id:
                 product = user.employee_ids[0].product_id
                 
@@ -53,8 +49,6 @@ class search_wrong_ts_wizard(orm.TransientModel):
                     if ts.sheet_id == False or ts.sheet_id.state in ['draft', 'new', False]:
                         ts_values['amount'] = ts.unit_amount * price
                         ts_obj.write(cr, uid, ts.id, ts_values, context)
-                    else:
-                        print "following line can't be updated :" +  ts.name + ' ' + ts.date
         
         return True
     
