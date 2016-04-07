@@ -43,7 +43,7 @@ class search_wrong_ts_wizard(orm.TransientModel):
                 
                 ts_values['product_id'] = product.id
                 ts_values['general_account_id'] = product.property_account_expense.id
-                price = product.standard_price
+                price = - product.standard_price
                 ts_ids = ts_obj.search(cr, uid, [('user_id','=',user.id)])
                 for ts in ts_obj.browse(cr, uid, ts_ids, context):
                     if ts.sheet_id == False or ts.sheet_id.state in ['draft', 'new', False]:
