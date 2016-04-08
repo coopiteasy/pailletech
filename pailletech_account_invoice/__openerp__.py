@@ -31,6 +31,7 @@
     "depends": [
         "account",
         "sale",
+        "web_sheet_full_width_selective",
     ],
     "data": [
         "views/account_invoice_view.xml",
