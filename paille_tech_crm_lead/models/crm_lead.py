@@ -31,7 +31,7 @@ class CrmLead(models.Model):
     
     @api.multi
     def on_change_partner_id(self, partner_id):
-        res = super(Lead, self).on_change_partner_id(partner_id)
+        res = super(CrmLead, self).on_change_partner_id(partner_id)
         if partner_id:
             res['value'].update({'site': partner_id})
         return res
