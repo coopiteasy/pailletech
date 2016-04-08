@@ -34,7 +34,7 @@
 				</xpath>
 				
                 <xpath expr="//field[@name='priority']/.." position="before">
-                    <group string="Architect information">
+                    <group string="Architect">
 	                    <field name="has_building_architect"/>
 	                    <field name="architect" context="{'default_isArchitect': True,'default_customer': False}" attrs="{'invisible':[('has_building_architect','!=','yes')]}"/>
 	                    <field name="architect_phone" attrs="{'invisible':[('has_building_architect','!=','yes')]}"/>
