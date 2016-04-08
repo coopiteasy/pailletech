@@ -12,5 +12,27 @@
             </field>
         </record>
 		
+		<record id="invoice_supplier_pailletech_form" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.pailletech.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//sheet" position="attributes">
+				    <attribute name="class">oe_form_sheet_full_screen</attribute>
+				</xpath>
+            </field>
+        </record>
+		
+		<record id="invoice_pailletech_form" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//sheet" position="attributes">
+				    <attribute name="class">oe_form_sheet_full_screen</attribute>
+				</xpath>
+            </field>
+        </record>
+
     </data>
 </openerp>
