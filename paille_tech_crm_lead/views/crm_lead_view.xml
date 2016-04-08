@@ -18,7 +18,6 @@
                 </xpath>
                 
                 <xpath expr="//label[@for='section_id']" position="before">
-                    <field name="building_permit"/>
                     <field name="has_building_permit"/>
 	                <field name="building_permit_date" attrs="{'invisible':[('has_building_permit','!=','yes')]}"/>
                     <field name="pre_down_payment_date"/>
@@ -44,7 +43,8 @@
                   	
                   	<group string="Construction site information">
                   		<field name="has_building_site"/>
-                  	 	<field name="site_id" context="{'show_address': 1,'default_is_site': True,'default_customer': False}" domain="[('is_site','=',True),('customer','!=',True),('supplier','!=',True)]" options='{"always_reload": True}' attrs="{'invisible':[('has_building_site','!=','yes')]}"/>
+                  		<field name="is_home" attrs="{'invisible':[('has_building_site','!=','yes')]}"/>
+                  	 	<field name="site_id" context="{'show_address': 1,'default_is_site': True,'default_customer': False, 'default_name': 'Terrain ' + code, 'default_type': 'delivery', 'default_parent_id': partner_id}" domain="[('is_site','=',True),('customer','!=',True),('supplier','!=',True)]" options='{"always_reload": True}' attrs="{'invisible':['|',('has_building_site','!=','yes'),('is_home','!=','no')]}"/>
                   	</group>
                 </xpath>
             </field>
@@ -89,7 +89,7 @@
         
         <!-- Opportunity form view -->
         <record model="ir.ui.view" id="crm_oppor_date_form">
-            <field name="name">construction.architect.sale.form</field>
+            <field name="name">crm.sale.form</field>
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
             <field name="arch" type="xml">
@@ -105,14 +105,13 @@
                 </xpath>
                 
                 <xpath expr="//label[@for='section_id']" position="before">
-                    <field name="building_permit"/>
                     <field name="has_building_permit"/>
 	                <field name="building_permit_date" attrs="{'invisible':[('has_building_permit','!=','yes')]}"/>
                     <field name="pre_down_payment_date"/>
                     <field name="down_payment_date"/>
 	                <field name="balance_payment_date"/>
                 </xpath>
-                 
+                
                 <xpath expr="//field[@name='user_id']" position="replace"/>
                  
                 <xpath expr="//label[@for='title_action']" position="before">
@@ -132,11 +131,23 @@
                 </xpath>
                 
                 <xpath expr="//field[@name='categ_ids']/.." position="after">
-                	<group string="Architect information">
+                	<group string="Field">
 	               		<field name="has_building_site"/>
-	               	 	<field name="site_id" context="{'show_address': 1,'default_is_site': True,'default_customer': False}" domain="[('is_site','=',True),('customer','!=',True),('supplier','!=',True)]" options='{"always_reload": True}' attrs="{'invisible':[('has_building_site','!=','yes')]}"/>
+                  		<field name="is_home" attrs="{'invisible':[('has_building_site','!=','yes')]}"/>
+                  	 	<field name="site_id" context="{'show_address': 1,'default_is_site': True,'default_customer': False, 'default_name': 'Terrain ' + code, 'default_type': 'delivery', 'default_parent_id': partner_id}" domain="[('is_site','=',True),('customer','!=',True),('supplier','!=',True)]" options='{"always_reload": True}' attrs="{'invisible':['|',('has_building_site','!=','yes'),('is_home','!=','no')]}"/>
 	               	</group>
                 </xpath>
+                
+                <xpath expr="//field[@name='phone']" position="after">
+                	<field name="mobile"/>
+                </xpath> 
+                
+                <!-- <xpath expr="//field[@name='partner_id']" position="replace">
+                	<field name="partner_id"
+                           on_change="on_change_partner_id(partner_id)"
+                           string="Customer"
+                           context="{'show_address': 1, 'default_name': partner_name, 'default_email': email_from, 'default_phone': phone}"/>
+                </xpath> -->
             </field>
         </record>
         
@@ -153,6 +164,17 @@
                </xpath>
                <xpath expr="//field[@name='planned_revenue']" position="replace">
                 	<field name="planned_revenue" digits="[42,0]" sum="Expected Revenues"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_partner_pailletech_form" model="ir.ui.view">
+            <field name="name">res.partner.pailletech.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+            	<xpath expr="//page[@string='Contacts']" position="attributes">
+                	<attribute name="attrs">{'invisible':[('child_ids', '=', [])]}</attribute>
                 </xpath>
             </field>
         </record>

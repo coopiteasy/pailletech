@@ -17,6 +17,8 @@ class CrmLead(models.Model):
                                         ('no','No')],string='Has the building permit')
     has_building_site = fields.Selection([('yes','Yes'),
                                         ('no','No')],string='Has the construction site')
+    is_home = fields.Selection([('yes','Yes'),
+                                 ('no','No')],string='The site is the home address')
     has_building_architect = fields.Selection([('yes','Yes'),
                                         ('no','No')],string='Has an architect')
     building_permit_date = fields.Date(string='Building permit date')
@@ -25,7 +27,6 @@ class CrmLead(models.Model):
     architect_mobile = fields.Char(related="architect.mobile", string="Architect mobile")
     architect_email = fields.Char(related="architect.email", string="Architect email")
     site_id = fields.Many2one('res.partner', string="Construction Site")
-    #site_street = fields.Char(related="site.street", string="Site street")
 
     _order = "create_date desc, id desc"
     
