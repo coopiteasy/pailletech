@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-09 15:31+0000\n"
-"PO-Revision-Date: 2016-02-09 16:35+0100\n"
+"POT-Creation-Date: 2016-04-11 08:01+0000\n"
+"PO-Revision-Date: 2016-04-11 10:42+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,25 +18,14 @@ msgstr ""
 "X-Generator: Poedit 1.6.5\n"
 
 #. module: paille_tech_crm_lead
-#: field:crm.lead,architect_email:0
-msgid "Architect email"
-msgstr "Email de l'architecte "
+#: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
+msgid "Architect"
+msgstr "Architecte"
 
 #. module: paille_tech_crm_lead
-#: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
 #: view:crm.lead:paille_tech_crm_lead.crm_oppor_date_form
 msgid "Architect information"
 msgstr "Architect information"
-
-#. module: paille_tech_crm_lead
-#: field:crm.lead,architect_mobile:0
-msgid "Architect mobile"
-msgstr "Portable de l'architecte "
-
-#. module: paille_tech_crm_lead
-#: field:crm.lead,architect_phone:0
-msgid "Architect phone"
-msgstr "Téléphone de l'architecte "
 
 #. module: paille_tech_crm_lead
 #: field:crm.lead,balance_payment_date:0
@@ -54,13 +43,28 @@ msgid "Building permit?"
 msgstr "Permis de bâtir?"
 
 #. module: paille_tech_crm_lead
+#: field:crm.lead,site_id:0
+msgid "Construction Site"
+msgstr "Construction Site"
+
+#. module: paille_tech_crm_lead
+#: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
+msgid "Construction site information"
+msgstr "Construction site information"
+
+#. module: paille_tech_crm_lead
+#: view:crm.lead:paille_tech_crm_lead.crm_oppor_date_form
+msgid "Customer"
+msgstr "Client"
+
+#. module: paille_tech_crm_lead
 #: field:crm.lead,down_payment_date:0
 msgid "Down payment date"
 msgstr "Date de l'acompte"
 
 #. module: paille_tech_crm_lead
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:38
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:61
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:58
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:80
 #, python-format
 msgid "Down payment date can't be greater than the balance payment date."
 msgstr ""
@@ -68,21 +72,21 @@ msgstr ""
 "paiement du solde."
 
 #. module: paille_tech_crm_lead
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:25
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:31
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:37
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:48
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:54
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:60
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:45
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:51
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:57
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:67
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:73
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:79
 #, python-format
 msgid "Error!"
-msgstr "Error!"
+msgstr "Erreur!"
 
 #. module: paille_tech_crm_lead
 #: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
 #: view:crm.lead:paille_tech_crm_lead.crm_oppor_date_form
 msgid "Estimations"
-msgstr "Estimations"
+msgstr "Echéanciers"
 
 #. module: paille_tech_crm_lead
 #: view:crm.lead:paille_tech_crm_lead.crm_case_tree_view_oppor
@@ -90,9 +94,46 @@ msgid "Expected Revenues"
 msgstr "Revenus attendus"
 
 #. module: paille_tech_crm_lead
+#: view:crm.lead:paille_tech_crm_lead.crm_oppor_date_form
+msgid "Field"
+msgstr "Terrain"
+
+#. module: paille_tech_crm_lead
+#: field:crm.lead,has_building_architect:0
+msgid "Has an architect"
+msgstr "Dispose un architecte"
+
+#. module: paille_tech_crm_lead
+#: field:crm.lead,has_building_permit:0
+msgid "Has the building permit"
+msgstr "Possède un permis de constuire"
+
+#. module: paille_tech_crm_lead
+#: field:crm.lead,has_building_site:0
+msgid "Has the construction site"
+msgstr "Possède un terrain"
+
+#. module: paille_tech_crm_lead
+#: field:res.partner,is_site:0
+msgid "Is a construction site"
+msgstr "Est un terrain"
+
+#. module: paille_tech_crm_lead
 #: model:ir.model,name:paille_tech_crm_lead.model_crm_lead
 msgid "Lead/Opportunity"
 msgstr "Piste/opportunité"
+
+#. module: paille_tech_crm_lead
+#: selection:crm.lead,has_building_architect:0
+#: selection:crm.lead,has_building_permit:0
+#: selection:crm.lead,has_building_site:0 selection:crm.lead,is_home:0
+msgid "No"
+msgstr "Non"
+
+#. module: paille_tech_crm_lead
+#: model:ir.model,name:paille_tech_crm_lead.model_res_partner
+msgid "Partner"
+msgstr "Partenaire"
 
 #. module: paille_tech_crm_lead
 #: field:crm.lead,pre_down_payment_date:0
@@ -100,8 +141,8 @@ msgid "Pre-down payment date"
 msgstr "Date du pré-acompte"
 
 #. module: paille_tech_crm_lead
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:32
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:55
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:52
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:74
 #, python-format
 msgid "Predown payment date can't be greater than the balance payment date."
 msgstr ""
@@ -109,8 +150,8 @@ msgstr ""
 "paiement du solde."
 
 #. module: paille_tech_crm_lead
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:26
-#: code:addons/paille_tech_crm_lead/models/crm_lead.py:49
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:46
+#: code:addons/paille_tech_crm_lead/models/crm_lead.py:68
 #, python-format
 msgid "Predown payment date can't be greater than the down payment date."
 msgstr ""
@@ -118,7 +159,24 @@ msgstr ""
 "paiement de l'accompte."
 
 #. module: paille_tech_crm_lead
+#: field:crm.lead,is_home:0
+msgid "The site is the home address"
+msgstr "Même adresse que le domicile"
+
+#. module: paille_tech_crm_lead
+#: selection:crm.lead,has_building_architect:0
+#: selection:crm.lead,has_building_permit:0
+#: selection:crm.lead,has_building_site:0 selection:crm.lead,is_home:0
+msgid "Yes"
+msgstr "Oui"
+
+#. module: paille_tech_crm_lead
 #: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
 #: view:crm.lead:paille_tech_crm_lead.crm_oppor_date_form
 msgid "{'invisible':True}"
 msgstr "{'invisible':True}"
+
+#. module: paille_tech_crm_lead
+#: view:res.partner:paille_tech_crm_lead.view_partner_pailletech_form
+msgid "{'invisible':[('child_ids', '=', [])]}"
+msgstr "{'invisible':[('child_ids', '=', [])]}"
