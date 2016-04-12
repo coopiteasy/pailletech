@@ -1,0 +1,18 @@
+<openerp>
+	<data>
+		<record id="view_analytic_entries_report_pailletech_search" model="ir.ui.view">
+            <field name="name">analytic.entries.report.search</field>
+            <field name="model">analytic.entries.report</field>
+            <field name="inherit_id" ref="account.view_analytic_entries_report_search"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='product_id']" position="after">
+            		<field name="parent_id"/>
+            	</xpath>
+            	<xpath expr="//filter[@string='Partner']" position="after">
+            		<filter string="Parent" context="{'group_by':'parent_id'}"/>
+            	</xpath>
+            	
+            </field>
+       	</record>
+	</data>
+</openerp>
