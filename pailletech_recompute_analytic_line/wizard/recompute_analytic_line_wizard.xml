@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+
+        <record id="view_recompute_analytic_line_wizard" model="ir.ui.view">
+            <field name="name">recompute.analytic.line.wizard.form</field>
+            <field name="model">recompute.analytic.line.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Search">
+				<separator string="Recompute analytic"/>
+                <footer>
+                    <button name="recompute_analytic" string="Recompute analytic" type="object" class="oe_highlight"/>
+                   or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_recompute_analytic_line_wizard" model="ir.actions.act_window">
+            <field name="name">Recompute Analytic lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">recompute.analytic.line.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_recompute_analytic_line_wizard"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+		
+		<menuitem id="menu_recompute_analytic_line_wizard" name="Recompute Analytic lines" parent="account.menu_journals" action="action_recompute_analytic_line_wizard" groups="base.group_system" sequence="20"/>
+    </data>
+</openerp>
