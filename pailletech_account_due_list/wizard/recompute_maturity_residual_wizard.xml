@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+
+        <record id="view_recompute_maturity_residual_wizard" model="ir.ui.view">
+            <field name="name">recompute.maturity.residual.wizard.form</field>
+            <field name="model">recompute.maturity.residual.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Search">
+				<separator string="Recompute maturity residual"/>
+                <footer>
+                    <button name="recompute_maturity_residual" string="Recompute maturity residual" type="object" class="oe_highlight"/>
+                   or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_recompute_maturity_residual_wizard" model="ir.actions.act_window">
+            <field name="name">Recompute maturity residual</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">recompute.maturity.residual.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_recompute_maturity_residual_wizard"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+		
+		<menuitem id="menu_recompute_maturity_residual_wizard" name="Recompute maturity residual" parent="account.menu_journals" action="action_recompute_maturity_residual_wizard" groups="base.group_system" sequence="30"/>
+    </data>
+</openerp>

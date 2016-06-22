@@ -1,0 +1,56 @@
+<openerp>
+	<data>
+        <record id="view_payments_tree_PT" model="ir.ui.view">
+        <field name="name">Payments</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_due_list.view_payments_tree"/>
+        <field name="arch" type="xml">
+			<xpath expr="//tree[@string='Payments']" position="replace">
+				<tree string="Payments" colors="grey:reconcile_id!=False;red:date_maturity&lt;current_date" editable="bottom">
+	                <field name="priority"/>
+	                <field name="advanced_by"/>
+	                <field name="stored_invoice_id" readonly="1"/>
+	                <field name="invoice_date" readonly="1"/>
+	                <field name="partner_id" readonly="1"/>
+	                <field name="account_id" readonly="1"/>
+	                <field name="debit" sum="Total Debit" readonly="1"/>
+	                <field name="credit" sum="Total Credit" readonly="1"/>
+	                <field name="maturity_residual" sum="Total Amount Residual" readonly="1"/>
+	                <field name="date_maturity" readonly="1"/>
+	                <field name="move_id" readonly="1"/>
+	                <field name="reconcile_id" readonly="1"/>
+	                <field name="reconcile_partial_id" readonly="1"/>
+	                <field name="day" invisible="1"/>
+	            </tree>
+            </xpath>
+        </field>
+    </record>	
+    
+     <record id="view_move_line_form_PT" model="ir.ui.view">
+            <field name="name">account.move.line.form</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='period_id']" position="after">
+            		<field name="priority"/>
+            		<field name="advanced_by"/>
+            	</xpath>
+            </field>
+    </record>
+    
+    <record id="view_payments_filter_PT" model="ir.ui.view">
+        <field name="name">Payments</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_due_list.view_payments_filter"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//field[@name='account_id']" position="after">
+        		<field name="journal_id"/>
+        	</xpath>
+		    <xpath expr="//filter[@string='Partner']" position="after">
+		    	<filter string="Priority" domain="[]" context="{'group_by':'priority'}"/>
+		    	<filter string="Advanced By" domain="[]" context="{'group_by':'advanced_by'}"/>
+		    </xpath> 
+        </field>
+    </record>	
+	</data>
+</openerp>
