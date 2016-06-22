@@ -1,7 +1,7 @@
 <openerp>
 	<data>
-		<record model="ir.actions.act_window" id="crm_all_fields">
-	        <field name="name">Fields</field>
+		<record model="ir.actions.act_window" id="crm_all_sites">
+	        <field name="name">Construction sites</field>
 	        <field name="res_model">res.partner</field>
 	        <field name="view_type">form</field>
 	        <field name="view_mode">kanban,tree,form</field>
@@ -9,6 +9,6 @@
 	        <field name="search_view_id" ref="base.view_res_partner_filter"/>
 	    </record>
     
-        <menuitem name="Fields" id="menu_crm_all_fields" parent="base.menu_sales" sequence="2" action="crm_all_fields"/>
+        <menuitem name="Sites" id="menu_crm_all_sites" parent="base.menu_sales" sequence="2" action="crm_all_sites"/>
 	</data>
 </openerp>
