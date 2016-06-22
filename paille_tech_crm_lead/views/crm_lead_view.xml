@@ -134,7 +134,7 @@
                 	<group string="Field">
 	               		<field name="has_building_site"/>
                   		<field name="is_home" attrs="{'invisible':[('has_building_site','!=','yes')]}"/>
-                  	 	<field name="site_id" context="{'show_address': 1,'default_is_site': True,'default_customer': False, 'default_name': 'Terrain ' + code, 'default_type': 'delivery', 'default_parent_id': partner_id}" domain="[('is_site','=',True),('customer','!=',True),('supplier','!=',True)]" options='{"always_reload": True}' attrs="{'invisible':['|',('has_building_site','!=','yes'),('is_home','!=','no')]}"/>
+                  	 	<field name="site_id" context="{'show_address': 1,'default_is_site': True,'default_customer': False, 'default_name': 'Terrain ' + code, 'default_type': 'delivery'}" domain="[('is_site','=',True),('customer','!=',True),('supplier','!=',True)]" options='{"always_reload": True}' attrs="{'invisible':['|',('has_building_site','!=','yes'),('is_home','!=','no')]}"/>
 	               	</group>
                 </xpath>
                 
