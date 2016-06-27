@@ -23,6 +23,21 @@ class AccountInvoice(models.Model):
     
     advanced_by = fields.Many2one('hr.employee', string="Advanced By")
     
+    @api.multi
+    def finalize_invoice_move_lines(self, move_lines):
+        """ finalize_invoice_move_lines(move_lines) -> move_lines
+
+            Hook method to be overridden in additional modules to verify and
+            possibly alter the move lines to be created by an invoice, for
+            special cases.
+            :param move_lines: list of dictionaries with the account.move.lines (as for create())
+            :return: the (possibly updated) final move_lines to create for this invoice
+        """
+        for move_line in move_lines:
+            if move_line[2]['analytic_account_id'] == False and move_line[2]['tax_code_id'] == False:
+                move_line[2]['advanced_by'] = self.advanced_by.id
+                #move_lines.update(move_line)
+        return move_lines
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
     
