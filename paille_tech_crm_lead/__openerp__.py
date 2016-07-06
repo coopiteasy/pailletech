@@ -29,6 +29,7 @@
         "Houssine BAKKALI <houssine.bakkali@gmail.com>",
     ],
     "depends": [
+        "sale",
         "crm",
         "crm_construction_architect",
     ],
