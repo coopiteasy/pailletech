@@ -1,5 +1,51 @@
 <openerp>
 	<data>
+		<record id="view_partner_tree_pt" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field eval="8" name="priority"/>
+            <field name="inherit_id" ref="base.view_partner_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="before">
+                	<field name="city"/>
+                	<field name="mobile"/>
+                </xpath>
+            </field>
+        </record>
+		
+		<record id="view_partner_tree_site_pt" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Contacts">
+                    <field name="display_name"/>
+                    <field name="function" invisible="1"/>
+                    <field name="street"/>
+                    <field name="zip"/>
+                    <field name="city"/>
+                    <field name="country_id"/>
+                    <field name="phone" invisible="1"/>
+                    <field name="email" invisible="1"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="is_company" invisible="1"/>
+                    <field name="country_id" invisible="1"/>
+                    <field name="parent_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+		
+		<record model="ir.ui.view" id="construction_site_form">
+            <field name="name">construction.site.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='website']" position="after">
+                    <field name="is_site" readonly="True"/>
+                </xpath>
+            </field>
+        </record>
+        
 		<record model="ir.actions.act_window" id="crm_all_sites">
 	        <field name="name">Construction sites</field>
 	        <field name="res_model">res.partner</field>
@@ -8,7 +54,30 @@
 	        <field name="domain">[('is_site','=',True)]</field>
 	        <field name="search_view_id" ref="base.view_res_partner_filter"/>
 	    </record>
-    
+    	
+    	<record id="action_partner_form_view1" model="ir.actions.act_window.view">
+            <field eval="0" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="base.res_partner_kanban_view"/>
+            <field name="act_window_id" ref="crm_all_sites"/>
+        </record>
+        
+        <record id="action_partner_form_view2" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="base.view_partner_form"/>
+            <field name="act_window_id" ref="crm_all_sites"/>
+        </record>
+        
+    	<record id="action_partner_tree_view_pt" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_partner_tree_site_pt"/>
+            <field name="act_window_id" ref="crm_all_sites"/>
+        </record>
+        
         <menuitem name="Sites" id="menu_crm_all_sites" parent="base.menu_sales" sequence="2" action="crm_all_sites"/>
+        
+        <menuitem name="Sites" id="menu_crm_all_sites_project" parent="project.menu_project_management" sequence="6" action="crm_all_sites"/>
 	</data>
 </openerp>
