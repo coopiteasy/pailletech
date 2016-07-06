@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-11 08:01+0000\n"
-"PO-Revision-Date: 2016-04-11 10:42+0100\n"
+"PO-Revision-Date: 2016-07-06 11:50+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -45,12 +45,12 @@ msgstr "Permis de bâtir?"
 #. module: paille_tech_crm_lead
 #: field:crm.lead,site_id:0
 msgid "Construction Site"
-msgstr "Construction Site"
+msgstr "Terrain"
 
 #. module: paille_tech_crm_lead
 #: view:crm.lead:paille_tech_crm_lead.crm_lead_form_view
 msgid "Construction site information"
-msgstr "Construction site information"
+msgstr "Information terrain"
 
 #. module: paille_tech_crm_lead
 #: view:crm.lead:paille_tech_crm_lead.crm_oppor_date_form
@@ -101,7 +101,7 @@ msgstr "Terrain"
 #. module: paille_tech_crm_lead
 #: field:crm.lead,has_building_architect:0
 msgid "Has an architect"
-msgstr "Dispose un architecte"
+msgstr "Dispose d'un architecte"
 
 #. module: paille_tech_crm_lead
 #: field:crm.lead,has_building_permit:0
@@ -111,7 +111,7 @@ msgstr "Possède un permis de constuire"
 #. module: paille_tech_crm_lead
 #: field:crm.lead,has_building_site:0
 msgid "Has the construction site"
-msgstr "Possède un terrain"
+msgstr "Dispose d'un terrain"
 
 #. module: paille_tech_crm_lead
 #: field:res.partner,is_site:0
