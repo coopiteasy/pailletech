@@ -8,6 +8,8 @@
             <field name="arch" type="xml">
             <form string="Search">
 				<separator string="Recompute analytic"/>
+                <field name="from_date"/>
+                <field name="user"/>
                 <footer>
                     <button name="recompute_analytic" string="Recompute analytic" type="object" class="oe_highlight"/>
                    or
