@@ -6,8 +6,8 @@
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
             <field name="arch" type="xml">
-                <field name="name" position="before">
-                    <field name="code" invisible="True"/>
+                <field name="active" position="before">
+                    <field name="code" groups="base.group_system"/>
                 </field>
             </field>
         </record>
