@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+		<record id="view_action_form_pt" model="ir.ui.view">
+            <field name="name">crm.action.form</field>
+            <field name="model">crm.action</field>
+            <field name="inherit_id" ref="crm_action.view_action_form"/>
+            <field name="arch" type="xml">
+            	<field name="user_id" position="replace"/>
+            	
+            	<field name="action_type_id" position="replace">
+            		<field name="action_type_id" invisible="True"/>
+            	</field>
+            	
+            	<field name="partner_id" position="after">
+            		
+            		<field name="subject"/>
+            	</field>
+            </field> 
+        </record>  	
+        
+        <record id="view_action_tree_pt" model="ir.ui.view">
+            <field name="name">crm.action.tree</field>
+            <field name="model">crm.action</field>
+            <field name="inherit_id" ref="crm_action.view_action_tree"/>
+            <field name="arch" type="xml">
+            	<field name="user_id" position="replace"/>
+            	
+            	<field name="action_type_id" position="replace">
+            		<field name="action_type_id" invisible="True"/>
+            	</field>
+            	
+            	<field name="date" position="after">
+            		<field name="user_id" />
+            		<field name="subject"/>
+            	</field>
+            </field>
+        </record>
+        
+        <record id="view_crm_action_filter_pt" model="ir.ui.view">
+            <field name="name">CRM - Actions</field>
+            <field name="model">crm.action</field>
+            <field name="inherit_id" ref="crm_action.view_crm_action_filter"/>
+            <field name="arch" type="xml">
+				<filter name="partner_groupby" position="after">                 
+                 	<filter name="crm_lead_groupby" string="Lead/Opportunity" context="{'group_by': 'lead_id'}"/>
+                 </filter>
+            </field>
+        </record>
+        
+        <record id="view_action_type_form_pt" model="ir.ui.view">
+            <field name="name">crm.action.type.form</field>
+            <field name="model">crm.action.type</field>
+            <field name="inherit_id" ref="crm_action.view_action_type_form"/>
+            <field name="arch" type="xml">
+            	<field name="priority" position="after">
+            		<field name="default"/>
+            	</field>
+            </field>
+        </record>
+        
+        <record id="popup_action_form" model="ir.ui.view">
+            <field name="name">crm.action.popup.form</field>
+            <field name="model">crm.action</field>
+            <field name="arch" type="xml">
+                <form string="Actions">
+                    <header>
+                        <button string="Mark as Done" name="button_confirm" type="object" states="draft"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="lead_id"/>
+                            <field name="partner_id"/>
+                            <field name="date"/>
+                            <field name="user_id"/>
+                            <field name="subject"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="action_type_id" invisible="True"/>
+                            <field name="details" width="200"/>
+                        </group>
+                    </sheet>
+		        	<footer>
+		        		<button name="write" type="object" string="Save" class="oe_highlight"/> or <button name="cancel" string="Cancel" special="cancel" class="oe_link"/> 
+		        	</footer>
+                </form>
+            </field>
+        </record>
+        
+        <menuitem id="my_action_inbox" name="My actions" string="My actions" action="crm_action.action_crm_action_view" parent="mail.mail_feeds"/>
+        
+        <record id="view_action_type_tree_pt" model="ir.ui.view">
+            <field name="name">crm.action.type.tree</field>
+            <field name="model">crm.action.type</field>
+            <field name="inherit_id" ref="crm_action.view_action_type_tree"/>
+            <field name="arch" type="xml">
+                <tree editable="top" position="replace">
+                    <tree>
+	                    <field name="name"/>
+	                    <field name="priority"/>
+	                    <field name="active"/>
+                   	</tree>
+                </tree>
+                <field name="priority" position="after">
+            		<field name="default"/>
+            	</field>
+            </field>
+        </record>
+        
+        <record id="crm_action.action_crm_action_type_view"  model="ir.actions.act_window">
+            <field name="name">Action Types</field>
+            <field name="res_model">crm.action.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</openerp>

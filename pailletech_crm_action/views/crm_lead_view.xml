@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	<record model="ir.ui.view" id="crm_case_form_view_leads_pt_action">
+            <field name="name">crm.lead.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@name='%(crm.crm_case_categ_phone_incoming0)d']" position="replace"/>
+            	
+            </field>
+        </record>
+    	
+    	<record model="ir.ui.view" id="crm_case_form_view_oppor_pt_action">
+            <field name="name">crm.oppor.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@name='%(crm.crm_case_categ_phone_incoming0)d']" position="replace"/>
+            	
+            </field>
+        </record>
+    	
+    	<record model="ir.ui.view" id="crm_lead_tree_view">
+            <field name="name">crm.lead.date.tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_leads" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">
+           			<field name="date_action"/>
+           			<field name="title_action"/>
+                	<field name="actions_count"/>
+           			<field name="actions_in_month"/>
+                </xpath>  
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="crm_case_tree_view_oppor">
+            <field name="name">Opportunities Tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_oppor" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='title_action']" position="after">
+                    <field name="actions_count"/>
+           			<field name="actions_in_month"/>
+               </xpath>
+            </field>
+        </record>
+        
+    	<record model="ir.ui.view" id="crm_oppor_action_form_pt">
+            <field name="name">crm.oppor.action.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+            	<page string="Internal Notes" position="before">
+            		<page name="action" string="Actions">
+            			<group>
+	            			<field name="actions_count"/>
+	            			<field name="actions_in_month"/>
+	            			<field name="date_action"/>
+	            		</group>
+            			<button name="action_done" string="Log action" type="object"/>
+            			<button name="contact_asap" string="Contact ASAP" type="object"/>
+            			<button name="contact_one_week" string="Contact in one week" type="object"/>
+            			<button name="contact_one_month" string="Contact in one month" type="object"/>
+            			<button name="contact_three_month" string="Contact in three months" type="object"/>
+            			<field name="action_ids">
+            				<tree editable="top"  colors="red:date &lt; current_date and state=='draft';blue:date &gt;= current_date and state=='draft'">
+			                    <field name="date"/>
+			                    <field name="user_id"/>
+			                    <field name="subject"/>
+			                    <field name="details"/>
+			                    <button icon="STOCK_APPLY" name="button_confirm" type="object" string="Mark as Done" states="draft"/>
+			                    <button icon="gtk-undo" name="button_set_to_draft" type="object" string="Back to Todo" states="done"/>
+			                    <field name="state"/>
+	            				<button type="object" icon="STOCK_FIND" name="view_action"/>
+	            			</tree>
+            			</field>
+            		</page>
+            	</page>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="crm_lead_action_form_pt">
+            <field name="name">crm.lead.action.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
+            <field name="arch" type="xml">
+            	<page string="Internal Notes" position="before">
+            		<page name="action" string="Actions">
+            			<group>
+	            			<field name="actions_count"/>
+	            			<field name="actions_in_month"/>
+	            			<field name="date_action"/>
+            			</group>
+            			<button name="action_done" string="Log action" type="object"/>
+            			<button name="contact_asap" string="Contact ASAP" type="object"/>
+            			<button name="contact_one_week" string="Contact in one week" type="object"/>
+            			<button name="contact_one_month" string="Contact in one month" type="object"/>
+            			<button name="contact_three_month" string="Contact in three months" type="object"/>
+            			<field name="action_ids">
+            				<tree editable="top" colors="red:date &lt; current_date and state=='draft';blue:date &gt;= current_date and state=='draft'">
+			                    <field name="date"/>
+			                    <field name="subject"/>
+			                    <field name="user_id"/>
+			                    <field name="details"/>
+			                    <button icon="STOCK_APPLY" name="button_confirm" type="object" string="Mark as Done" states="draft"/>
+			                    <button icon="gtk-undo" name="button_set_to_draft" type="object" string="Back to Todo" states="done"/>
+			                    <field name="state"/>
+	            				<button type="object" icon="STOCK_FIND" name="view_action"/>
+	            			</tree>
+            			</field>
+            		</page>
+            	</page>
+            </field>
+       </record>
+    </data>
+</openerp>
