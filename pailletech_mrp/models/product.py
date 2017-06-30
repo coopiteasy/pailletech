@@ -7,14 +7,14 @@ class ProductUOM(models.Model):
     
     product_ids = fields.One2many('product.template', 'uom_id', string="Products")
     
-#     @api.multi
-#     def name_get(self):
-#         name_list = []
-#         for product in self:
-#             display_name = '%s [%s]' % (product.name, product.category_id.name)
-#             name_list.append((product.id, display_name))
-#         
-#         return name_list
+    @api.multi
+    def name_get(self):
+        name_list = []
+        for product in self:
+            display_name = '%s [%s]' % (product.name, product.category_id.name)
+            name_list.append((product.id, display_name))
+        
+        return name_list
 
 # class StockQuant(models.Model):
 #     _inherit = 'stock.quant'    
