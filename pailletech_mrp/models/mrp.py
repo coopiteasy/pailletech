@@ -49,3 +49,20 @@ class mrp_production(osv.osv):
                         'product_uos': move_line.product_uos and move_line.product_uos.id or False,
                     })
         return result
+    
+    def product_id_change(self, cr, uid, ids, product_id, product_qty=0, context=None):
+        vals = super(mrp_production,self).product_id_change(cr, uid, ids, product_id, product_qty, context)
+        product = self.pool.get('product.template').browse(cr, uid, product_id)
+        vals['domain'] = {'product_uom': [('category_id','=',product.uom_id.category_id.id)]}
+        
+        return vals
+    
+class stock_move(osv.osv):
+    _inherit = "stock.move"
+    
+    def onchange_product_id(self, cr, uid, ids, prod_id=False, loc_id=False, loc_dest_id=False, partner_id=False):
+        vals = super(stock_move,self).onchange_product_id(cr, uid, ids, prod_id, loc_id, loc_dest_id, partner_id)
+        product_id = self.pool.get('product.template').browse(cr, uid, prod_id)
+        vals['domain'] = {'product_uom': [('category_id','=',product_id.uom_id.category_id.id)]}
+        
+        return vals
