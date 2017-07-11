@@ -34,6 +34,7 @@
     ],
     "data": [
         'views/mrp_view.xml',
+        'views/product_view.xml',
     ],
     "installable": True,
 }
