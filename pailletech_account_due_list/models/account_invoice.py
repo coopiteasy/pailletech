@@ -22,6 +22,7 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
     
     advanced_by = fields.Many2one('hr.employee', string="Advanced By")
+    priority = fields.Integer(string="Priority")
     
     @api.multi
     def finalize_invoice_move_lines(self, move_lines):
@@ -36,9 +37,10 @@ class AccountInvoice(models.Model):
         for move_line in move_lines:
             if move_line[2]['analytic_account_id'] == False and move_line[2]['tax_code_id'] == False:
                 move_line[2]['advanced_by'] = self.advanced_by.id
-                #move_lines.update(move_line)
+                move_line[2]['priority'] = self.priority
         return move_lines
-class AccountInvoiceLine(models.Model):
-    _inherit = 'account.invoice.line'
-    
-    advanced_by = fields.Many2one(related='invoice_id.advanced_by',readonly=True)
+
+# class AccountInvoiceLine(models.Model):
+#     _inherit = 'account.invoice.line'
+#     
+#     advanced_by = fields.Many2one(related='invoice_id.advanced_by',readonly=True)

@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
 				<field name="date_due" position="after">
 		            <field name="advanced_by"/>
+		            <field name="priority"/>
 		        </field>
             </field>
         </record>
