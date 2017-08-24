@@ -57,10 +57,30 @@ class CrmAction(models.Model):
             'type': 'ir.actions.act_window',
             'view_type': 'form',
             'view_mode': 'form',
-            'target': 'new',
+            'target': 'current',
             'nodestroy':True,
         } 
     
+    @api.multi    
+    def view_lead_opport(self):
+        if self.lead_id.type == 'lead':
+            form = self.env.ref('pailletech_crm_action.crm_lead_action_form_pt', False)
+            name = "Lead"
+        else:
+            form = self.env.ref('pailletech_crm_action.crm_oppor_action_form_pt', False)
+            name = "Opportunity"
+        
+        return {
+            'name': name,
+            'res_model': 'crm.lead',
+            'view_id': form.id,
+            'res_id': self.id,
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'target': 'new',
+            'nodestroy':True,
+        } 
                      
 class CrmActionType(models.Model):
     _inherit = 'crm.action.type'

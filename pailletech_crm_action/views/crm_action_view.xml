@@ -24,6 +24,9 @@
             <field name="model">crm.action</field>
             <field name="inherit_id" ref="crm_action.view_action_tree"/>
             <field name="arch" type="xml">
+            	<field name="lead_id" position="before">
+            		<button type="object" icon="STOCK_FIND" name="view_lead_opport"/>
+            	</field>
             	<field name="user_id" position="replace"/>
             	
             	<field name="action_type_id" position="replace">
