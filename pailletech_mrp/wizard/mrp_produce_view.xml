@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_mrp_product_produce_wizard_pailletech" model="ir.ui.view">
+            <field name="name">MRP Product Produce</field>
+            <field name="model">mrp.product.produce</field>
+            <field name="inherit_id" ref="mrp.view_mrp_product_produce_wizard"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='consume_lines']/tree/field[@name='product_qty']" position="after">
+            		<field name="uom_id"/>
+            	</xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

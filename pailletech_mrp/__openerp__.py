@@ -30,11 +30,12 @@
     ],
     "depends": [
         'mrp',
-        'stock',        
+        'stock',
     ],
     "data": [
         'views/mrp_view.xml',
         'views/product_view.xml',
+        'wizard/mrp_produce_view.xml',
     ],
     "installable": True,
 }
