@@ -18,26 +18,17 @@
 ##############################################################################
 from openerp import models, fields, api
 
+class AccountAccount(models.Model):
+    _inherit = 'account.account'
+    
+    pay_and_due_list_account = fields.Boolean(string="Display in account & due list")
+    
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
-    
-#     signed_amount = fields.Float(
-#         compute='_signed_amount', string="Residual Amount", store=True,
-#         help="The residual amount on a receivable or payable of a journal "
-#              "entry expressed in the company currency.")
     
     priority = fields.Integer(string="Priority")
     
     advanced_by = fields.Many2one('hr.employee',string="Advanced By")
-#     
-#     @api.multi
-#     @api.depends('maturity_residual')
-#     def _signed_amount(self):
-#          for move_line in self:
-#             if move_line.date_maturity != False:
-#                 move_line.signed_amount = move_line.maturity_residual
-#             else:
-#                 move_line.signed_amount = 0.0
             
     @api.multi
     @api.depends('date_maturity', 'debit', 'credit', 'reconcile_id',
