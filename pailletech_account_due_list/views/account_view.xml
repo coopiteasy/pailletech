@@ -1,0 +1,14 @@
+<openerp>
+	<data>
+		<record id="view_account_form_PT" model="ir.ui.view">
+            <field name="name">account.account.form</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+            	<field name="active" position="after">
+            		<field name="pay_and_due_list_account"/>
+            	</field>
+            </field>
+        </record>
+	</data>
+</openerp>

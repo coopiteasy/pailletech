@@ -33,6 +33,8 @@
     ],
     "data": [
         "views/due_list_view.xml",
+        "views/account_invoice_view.xml",
+        "views/account_view.xml",
         "wizard/recompute_maturity_residual_wizard.xml",
     ],
     "installable": True,
