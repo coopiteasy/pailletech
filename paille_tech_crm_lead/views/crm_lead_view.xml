@@ -56,13 +56,15 @@
             <field name="inherit_id" ref="crm.crm_case_tree_view_leads" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='phone']" position="before">
-                	 <field name="mobile"/>
+                	<field name="mobile"/>
                 </xpath>
                 <xpath expr="//field[@name='phone']" position="after">
-                	 <field name="architect"/>
+                	<field name="has_building_site"/>
+                	<field name="has_building_permit"/>
+                	<field name="architect"/>
                 </xpath>  
                 <xpath expr="//field[@name='section_id']" position="replace">
-                	 <field name="section_id" invisible="1"/>
+                	<field name="section_id" invisible="1"/>
                 </xpath> 
             </field>
         </record>
