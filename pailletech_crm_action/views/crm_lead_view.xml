@@ -64,9 +64,10 @@
             			<button name="contact_one_week" string="Contact in one week" type="object"/>
             			<button name="contact_one_month" string="Contact in one month" type="object"/>
             			<button name="contact_three_month" string="Contact in three months" type="object"/>
-            			<field name="action_ids">
+            			<field name="action_ids" context="{'default_partner_id':partner_id}">>
             				<tree editable="top"  colors="red:date &lt; current_date and state=='draft';blue:date &gt;= current_date and state=='draft'">
 			                    <field name="date"/>
+			                    <field name="partner_id" invisible="True"/>
 			                    <field name="user_id"/>
 			                    <field name="subject"/>
 			                    <field name="details"/>
@@ -98,9 +99,10 @@
             			<button name="contact_one_week" string="Contact in one week" type="object"/>
             			<button name="contact_one_month" string="Contact in one month" type="object"/>
             			<button name="contact_three_month" string="Contact in three months" type="object"/>
-            			<field name="action_ids">
+            			<field name="action_ids" context="{'default_partner_id':partner_id}">
             				<tree editable="top" colors="red:date &lt; current_date and state=='draft';blue:date &gt;= current_date and state=='draft'">
 			                    <field name="date"/>
+			                    <field name="partner_id" invisible="True"/>
 			                    <field name="subject"/>
 			                    <field name="user_id"/>
 			                    <field name="details"/>
