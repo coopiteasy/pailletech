@@ -17,6 +17,7 @@ class ProductTemplate(models.Model):
 
 class ProductUOMCategory(models.Model):
     _inherit = 'product.uom.categ'
+    _order = "name"
     
     product_uoms = fields.One2many('product.uom','category_id', string="Product UoM")
        
@@ -24,13 +25,4 @@ class ProductUOM(models.Model):
     _inherit = 'product.uom'
 
     product_ids = fields.One2many('product.template', 'uom_id', string="Products")
-    
-#     @api.multi
-#     def name_get(self):
-#         name_list = []
-#         for product in self:
-#             display_name = '%s [%s]' % (product.name, product.category_id.name)
-#             name_list.append((product.id, display_name))
-#         
-#         return name_list
 
