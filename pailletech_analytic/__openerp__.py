@@ -30,6 +30,7 @@
     ],
     "depends": [
         "account",
+        "hr_timesheet_invoice"
     ],
     "data": [
         "views/account_analytic_view.xml",

@@ -31,11 +31,21 @@
             <field name="model">account.analytic.line</field>
             <field name="inherit_id" ref="account.view_account_analytic_line_tree"/>
             <field name="arch" type="xml">
-            	<field name="journal_id" position="before">
+            	<field name="account_id" position="after">
             		<field name="parent_analytic_account"/>
             	</field>
             </field>
         </record>
-       	
+        
+        <record id="view_account_analytic_line_tree_inherit" model="ir.ui.view">
+            <field name="name">account.analytic.line.tree.to_invoice</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet_invoice.view_account_analytic_line_tree_inherit"/>
+            	<field name="arch" type="xml">
+	            	<field name="to_invoice" position="attributes">
+	            		<attribute name="invisible">True</attribute>
+	            	</field>
+            	</field>
+        </record>
 	</data>
 </openerp>

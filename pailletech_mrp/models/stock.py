@@ -9,3 +9,8 @@ class StockHistory(models.Model):
     _inherit = 'stock.history'
     
     uom_id = fields.Many2one(related='product_id.product_tmpl_id.uom_id', string="UoM")
+    
+class StockQuant(models.Model):
+    _inherit = "stock.quant"
+    
+    uom_id = fields.Many2one(related='product_id.product_tmpl_id.uom_id', string="UoM")
