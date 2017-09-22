@@ -173,11 +173,22 @@
         <record id="view_partner_pailletech_form" model="ir.ui.view">
             <field name="name">res.partner.pailletech.form</field>
             <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
             	<xpath expr="//page[@string='Contacts']" position="attributes">
                 	<attribute name="attrs">{'invisible':[('child_ids', '=', [])]}</attribute>
                 </xpath>
+            </field>
+        </record>
+        
+       <record id="view_res_partner_filter" model="ir.ui.view">
+            <field name="name">res.partner.select</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+	            <group expand="0" position="inside">
+	                <filter string="Email" context="{'group_by': 'email'}"/>
+	            </group>
             </field>
         </record>
     </data>
