@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	<template id="pt_report_generalledger" inherit_id="account.report_generalledger">
+    		<xpath expr="//thead/tr/th[7]" position="replace"/>
+    		<xpath expr="//tr[@t-foreach='lines(childrenaccount)']/td[7]" position="replace"/>
+    	</template>
+    </data>
+</openerp>

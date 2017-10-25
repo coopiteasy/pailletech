@@ -35,6 +35,7 @@
     ],
     "data": [
         "views/account_invoice_view.xml",
+        "views/report_general_ledger.xml",
     ],
     "installable": True,
 }
