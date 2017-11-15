@@ -33,6 +33,7 @@
 				<field name="standard_price" position="after">
 					<field name="uom_id" on_change="onchange_uom(uom_id,uom_po_id)" groups="product.group_uom"/>
 					<field name="uom_reference" invisible="True"/>
+					<field name="uom_category"/>
 				</field>
 		    </field>
 		</record>

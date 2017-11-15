@@ -14,7 +14,8 @@ class ProductTemplate(models.Model):
                 break
         
     uom_reference = fields.Many2one('product.uom', compute="_compute_reference_uom", string="Reference UoM", help="Reference Unit of Measure for the UoM category of this product")
-
+    uom_category = fields.Many2one(related='uom_id.category_id',string="UoM Category", readonly=True, help="Category of this product")
+    
 class ProductUOMCategory(models.Model):
     _inherit = 'product.uom.categ'
     _order = "name"
