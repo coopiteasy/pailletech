@@ -19,22 +19,6 @@ class MrpProduction(models.Model):
     
     prod_order_seq = fields.Char(string='Production order sequence', readonly=True)
     
-#     @api.model
-#     def create(self, vals):
-#         name = self.env['ir.sequence'].get('mrp.production')
-#         code_proj = ''
-#         if vals.get('project_id',False):
-#             project_id = vals.get('project_id')
-#             project = self.env['project.project'].browse(project_id)
-#             code_proj = project.name[0:6]
-#         if vals.get('name',False):
-#             vals['name'] = code_proj + ' / ' + vals['name']
-#         else:
-#             vals['name'] = code_proj + ' / '
-#         vals['prod_order_seq'] = code_proj
-#         
-#         return super(MrpProduction, self).create(vals)
-    
     @api.model
     def _prepare_project_vals(self, production):
         # If this production come from a sale order and that order
