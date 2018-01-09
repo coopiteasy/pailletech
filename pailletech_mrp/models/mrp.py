@@ -34,7 +34,8 @@ class mrp_production(osv.osv):
     
     _columns = {
         'building_blocks': fields.one2many('stock.move', 'production_building_block_id', 'Building Blocks',
-            domain=[('state', 'not in', ('done', 'cancel'))], readonly=True, states={'draft': [('readonly', False)]}),
+            domain=[('state', 'not in', ('done', 'cancel'))], readonly=True, copy=True,
+            states={'draft': [('readonly', False)]}),
     }
     
     def _prepare_lines(self, cr, uid, production, properties=None, context=None):
