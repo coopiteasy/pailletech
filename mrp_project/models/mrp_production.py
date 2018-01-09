@@ -10,12 +10,12 @@ class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     project_id = fields.Many2one(
-        comodel_name="project.project", string="Project", copy=False,
+        comodel_name="project.project", string="Project",
         readonly=True, states={'draft': [('readonly', False)]},required=True)
     analytic_account_id = fields.Many2one(
         related="project_id.analytic_account_id", store=True)
     
-    name = fields.Char(string='Reference', required=True, readonly=True, states={'draft': [('readonly', False)]}, copy=False, default='/')
+    name = fields.Char(string='Reference', required=True, readonly=True, states={'draft': [('readonly', False)]}, copy=False)
     
     prod_order_seq = fields.Char(string='Production order sequence', readonly=True)
     
