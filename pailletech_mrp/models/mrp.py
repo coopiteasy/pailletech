@@ -22,6 +22,14 @@
 from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
 
+
+class StockMove(osv.osv):
+    _inherit = 'mrp.bom.line'
+
+    _columns = {
+        'description': fields.char(string='Description'),
+    }
+
 class StockMove(osv.osv):
     _inherit = 'stock.move'
 
@@ -37,6 +45,8 @@ class mrp_production(osv.osv):
             domain=[('state', 'not in', ('done', 'cancel'))], readonly=True, copy=True,
             states={'draft': [('readonly', False)]}),
     }
+    
+    _order = 'name desc'
     
     def _prepare_lines(self, cr, uid, production, properties=None, context=None):
         result = super(mrp_production,self)._prepare_lines(cr, uid, production, properties, context)
