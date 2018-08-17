@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="report_mrporder_pt" inherit_id="mrp.report_mrporder">
+			<xpath expr="//span[@t-field='line.product_uom_qty']" position="replace">
+				<!-- the formatLang function is not usable in simple model based report-->
+				<span t-esc="line.product_uom_qty"/>
+			</xpath>
+			<xpath expr="//span[@t-field='line2.product_uom_qty']" position="replace">
+				<!-- the formatLang function is not usable in simple model based report-->
+				<span t-esc="line2.product_uom_qty"/>
+			</xpath>
+		</template>
+	</data>
+</openerp>

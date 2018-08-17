@@ -34,10 +34,12 @@
         'stock_account',
     ],
     "data": [
+        'data/pailletech_mrp_data.xml',
         'views/mrp_view.xml',
         'views/product_view.xml',
         'views/stock_view.xml',
         'wizard/mrp_produce_view.xml',
+        'report/report_mrporder.xml',
     ],
     "installable": True,
 }

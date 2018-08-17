@@ -23,19 +23,13 @@ from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
 
 
-class StockMove(osv.osv):
+class MRPBomLine(osv.osv):
     _inherit = 'mrp.bom.line'
 
     _columns = {
         'description': fields.char(string='Description'),
     }
 
-class StockMove(osv.osv):
-    _inherit = 'stock.move'
-
-    _columns = {
-        'production_building_block_id': fields.many2one('mrp.production', 'Production Order for Building Blocks', select=True, copy=False),
-    }
 
 class mrp_production(osv.osv):
     _inherit = 'mrp.production'
@@ -67,7 +61,8 @@ class mrp_production(osv.osv):
         vals['domain'] = {'product_uom': [('category_id','=',product.product_tmpl_id.uom_id.category_id.id)]}
         
         return vals
-    
+
+
 class stock_move(osv.osv):
     _inherit = "stock.move"
     
