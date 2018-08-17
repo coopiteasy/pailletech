@@ -13,3 +13,4 @@ class AccountAnalyticLine(models.Model):
     other_partner_id = fields.Many2one(
         comodel_name='res.partner', string="Other Partner",
         domain="['|', ('parent_id', '=', False), ('is_company', '=', True)]")
+    period_id = fields.Many2one(related='move_id.period_id', string="Period",store=True, readonly=True)
