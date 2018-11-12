@@ -2,7 +2,7 @@
 #  2015-2017 Coop IT Easy (<http://www.coopiteasy.be>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import fields, models
+from openerp import fields, models, api
 import openerp.addons.decimal_precision as dp
 
 class StockHistory(models.Model):
@@ -47,4 +47,8 @@ class MRPProduction(models.Model):
     building_blocks = fields.One2many('stock.move', 'production_building_block_id', string='Building Blocks',
         domain=[('state', 'not in', ('done', 'cancel'))], readonly=True, copy=True,
         states={'draft': [('readonly', False)]})
-    
+
+
+    @api.one
+    def action_draft(self):
+        self.write({'state': 'draft'})
