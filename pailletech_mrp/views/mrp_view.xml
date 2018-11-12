@@ -23,6 +23,17 @@
             </field>
         </record>
         
+        <record id="view_mrp_production_filter" model="ir.ui.view">
+            <field name="name">mrp.production.select</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="arch" type="xml">
+                <filter context="{'group_by':'product_id'}" position="after">
+                <filter string="Project" domain="[]" context="{'group_by':'project_id'}"/>
+                </filter>
+            </field>
+        </record>
+        
         <record id="mrp_bom_form_view_pt" model="ir.ui.view">
             <field name="name">mrp.bom.form.pt</field>
             <field name="model">mrp.bom</field>

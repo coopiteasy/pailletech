@@ -32,6 +32,7 @@
         'mrp',
         'stock',
         'stock_account',
+        'mrp_project',
     ],
     "data": [
         'data/pailletech_mrp_data.xml',
