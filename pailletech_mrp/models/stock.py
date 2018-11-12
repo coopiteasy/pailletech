@@ -31,3 +31,20 @@ class StockMove(models.Model):
                 "backorder. Changing this quantity on assigned moves affects "
                 "the product reservation, and should be done with care."
         )
+
+
+
+class MRPBomLine(models.Model):
+    _inherit = 'mrp.bom.line'
+
+    description = fields.Char(string='Description')
+
+
+class MRPProduction(models.Model):
+    _inherit = 'mrp.production'
+    
+    customer_id = fields.Many2one(related='project_id.partner_id', string="Customer")
+    building_blocks = fields.One2many('stock.move', 'production_building_block_id', string='Building Blocks',
+        domain=[('state', 'not in', ('done', 'cancel'))], readonly=True, copy=True,
+        states={'draft': [('readonly', False)]})
+    
