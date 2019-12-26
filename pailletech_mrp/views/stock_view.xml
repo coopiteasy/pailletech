@@ -9,6 +9,12 @@
 	            <field name="picking_id" position="before">
 					<field name="project_id"/>	            	
 	            </field>
+                <field name="product_uom_qty" position="attributes">
+                	<attribute name="digits">[14, 2]</attribute>
+                </field>
+                <field name="product_uos_qty" position="attributes">
+                	<attribute name="digits">[14, 2]</attribute>
+                </field>
 	        </field>
 	    </record>
 
