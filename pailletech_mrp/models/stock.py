@@ -19,7 +19,17 @@ class StockQuant(models.Model):
 
 class StockMove(models.Model):
     _inherit = "stock.move"
- 
+
+    @api.multi
+    @api.depends('production_id.project_id', 'raw_material_production_id.project_id')
+    def _compute_project_id(self):
+        for move in self:
+            if move.production_id:
+                move.project_id = move.production_id.project_id.id
+            elif move.raw_material_production_id:
+                move.project_id = move.raw_material_production_id.project_id.id
+            
+        
     production_building_block_id =  fields.Many2one('mrp.production', string='Production Order for Building Blocks', select=True, copy=False)
     product_uom_qty = fields.Float(string='Quantity', digits=dp.get_precision('Product Unit of Measure MRP'),
             required=True, states={'done': [('readonly', True)]},
@@ -31,7 +41,10 @@ class StockMove(models.Model):
                 "backorder. Changing this quantity on assigned moves affects "
                 "the product reservation, and should be done with care."
         )
-
+    project_id = fields.Many2one(compute='_compute_project_id',
+                                 comodel_name='project.project',
+                                 string="Project",
+                                 store=True)
 
 
 class MRPBomLine(models.Model):
