@@ -12,7 +12,7 @@
             	<field name="origin" position="after">
             		<field name="customer_id"/>
             	</field>
-            	<xpath expr="//page[@string='Consumed Products']" position="before">
+            	<xpath expr="//page[@string='Consumed Products']" position="after">
             		<page string="Building blocks">
             			<group string="Sub Elements">
                             <field name="building_blocks" nolabel="1" options="{'reload_on_button': true}">
