@@ -21,11 +21,15 @@ class StockMove(models.Model):
     _inherit = "stock.move"
 
     @api.multi
-    @api.depends('production_id.project_id', 'raw_material_production_id.project_id')
+    @api.depends('production_id.project_id',
+                 'raw_material_production_id.project_id',
+                 'inverted_prod_order_id.project_id')
     def _compute_project_id(self):
         for move in self:
             if move.production_id:
                 move.project_id = move.production_id.project_id.id
+            elif move.inverted_prod_order_id:
+                move.project_id = move.inverted_prod_order_id.project_id.id
             elif move.raw_material_production_id:
                 move.project_id = move.raw_material_production_id.project_id.id
             
